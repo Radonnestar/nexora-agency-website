@@ -225,3 +225,10 @@
   50% { opacity: 1; }
 }
 .iv-twinkle { animation: iv-twinkle 3s ease-in-out infinite; }
+
+
+html,
+body {
+  overflow-x: hidden;
+  overflow-x: clip;
+}

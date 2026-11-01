@@ -74,7 +74,7 @@ const member: Variants = {
 
 export default function About() {
   return (
-    <section id="about" className="scroll-mt-16 py-20 md:py-28">
+    <section id="about" className="scroll-mt-16 overflow-x-clip py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4">
         <SectionHeading
           eyebrow="About us"
