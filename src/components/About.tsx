@@ -55,6 +55,12 @@ const team: Member[] = [
     gradient: 'from-emerald-500 to-teal-600',
     look: { skin: '#a8714a', hair: '#1c1917', shirt: '#10b981', style: 'curly', beard: true },
   },
+  {
+    name: 'Tareq Abdullah Prio',
+    role: 'Project Manager',
+    gradient: 'from-amber-500 to-orange-600',
+    look: { skin: '#c68a5c', hair: '#171412', shirt: '#f59e0b', style: 'short' },
+  },
 ]
 
 const viewport = { once: true, amount: 0.25 } as const
@@ -155,10 +161,10 @@ export default function About() {
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="mt-20 grid grid-cols-2 gap-6 md:grid-cols-4"
+          className="mt-20 flex flex-wrap justify-center gap-x-8 gap-y-12"
         >
           {team.map((person) => (
-            <motion.div key={person.name} variants={member} className="text-center">
+            <motion.div key={person.name} variants={member} className="w-36 text-center sm:w-44">
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 4 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 15 }}
