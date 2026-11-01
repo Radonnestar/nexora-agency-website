@@ -1,0 +1,227 @@
+/* Story timeline = 12 seconds. Percentages below are seconds / 12.
+   6.6s=55%  7.1s=59.2%  7.6s=63.3%  7.9s=65.8%  8.2s=68.3%  8.6s=71.7%
+   11.0s=91.7% (landing)  12s=100% */
+
+.iv-vb {
+  transform-box: view-box;
+}
+
+/* ---------- looping life ---------- */
+@keyframes iv-float {
+  0%, 100% { transform: translateY(-7px) rotate(-1.2deg); }
+  50% { transform: translateY(8px) rotate(1.4deg); }
+}
+.iv-float { animation: iv-float 2.6s ease-in-out infinite; }
+
+@keyframes iv-wave-a {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(7deg); }
+}
+.iv-wave-a { animation: iv-wave-a 0.9s ease-in-out infinite; }
+
+@keyframes iv-wave-b {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(-6deg); }
+}
+.iv-wave-b { animation: iv-wave-b 1.15s ease-in-out infinite; }
+
+@keyframes iv-hand-wave {
+  0%, 100% { transform: rotate(-18deg); }
+  50% { transform: rotate(20deg); }
+}
+.iv-hand-wave { animation: iv-hand-wave 0.5s ease-in-out infinite; }
+
+@keyframes iv-leg-a {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(6deg); }
+}
+.iv-leg-a { animation: iv-leg-a 1s ease-in-out infinite; }
+
+@keyframes iv-leg-b {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+}
+.iv-leg-b { animation: iv-leg-b 1.25s ease-in-out infinite; }
+
+@keyframes iv-blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.08); }
+}
+.iv-blink {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: iv-blink 3.4s ease-in-out infinite;
+}
+
+/* ---------- story (12s) ---------- */
+.iv-story {
+  animation-duration: 12s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
+/* freefall pose leaves when the chute snaps open */
+@keyframes iv-ff-out {
+  0%, 65.5% { opacity: 1; transform: none; }
+  66.6% { opacity: 1; transform: rotate(-22deg) translate(10px, -20px); }
+  67.6% { opacity: 0; transform: rotate(-50deg) translate(20px, -50px); }
+  100% { opacity: 0; transform: rotate(-50deg) translate(20px, -50px); }
+}
+.iv-ff-out { animation-name: iv-ff-out; animation-timing-function: ease-in; }
+
+/* right arm: upper arm swings down, forearm folds to the hip, yank, release */
+@keyframes iv-up-pull {
+  0%, 55% { transform: rotate(0deg); }
+  59.2% { transform: rotate(52deg); }
+  62% { transform: rotate(52deg); }
+  63.3% { transform: rotate(42deg); }
+  66% { transform: rotate(18deg); }
+  70%, 100% { transform: rotate(0deg); }
+}
+.iv-up-pull { animation-name: iv-up-pull; }
+
+@keyframes iv-fore-pull {
+  0%, 55% { transform: rotate(0deg); }
+  59.2% { transform: rotate(142deg); }
+  62% { transform: rotate(142deg); }
+  63.3% { transform: rotate(108deg); }
+  66% { transform: rotate(30deg); }
+  70%, 100% { transform: rotate(0deg); }
+}
+.iv-fore-pull { animation-name: iv-fore-pull; }
+
+/* open hand <-> fist swap */
+@keyframes iv-hand-open {
+  0%, 58.6% { opacity: 1; }
+  58.7%, 63.4% { opacity: 0; }
+  63.5%, 100% { opacity: 1; }
+}
+.iv-hand-open { animation-name: iv-hand-open; animation-timing-function: linear; }
+@keyframes iv-hand-fist {
+  0%, 58.6% { opacity: 0; }
+  58.7%, 63.4% { opacity: 1; }
+  63.5%, 100% { opacity: 0; }
+}
+.iv-hand-fist { animation-name: iv-hand-fist; animation-timing-function: linear; }
+
+/* ripcord handle follows the hand, then is thrown away */
+@keyframes iv-handle {
+  0%, 62% { opacity: 1; transform: none; }
+  63.3% { opacity: 1; transform: translate(18px, 30px) rotate(20deg); }
+  65.5% { opacity: 0; transform: translate(40px, 80px) rotate(60deg); }
+  100% { opacity: 0; transform: translate(40px, 80px) rotate(60deg); }
+}
+.iv-handle { animation-name: iv-handle; }
+
+/* pilot chute flies out of the pack */
+@keyframes iv-pilot {
+  0%, 62.6% { opacity: 0; transform: scale(0.1); }
+  63.6% { opacity: 1; transform: scale(0.35); }
+  66.2% { opacity: 1; transform: scale(1); }
+  67.4% { opacity: 0; transform: scale(1.05) translateY(-30px); }
+  100% { opacity: 0; transform: scale(1.05) translateY(-30px); }
+}
+.iv-pilot { animation-name: iv-pilot; }
+
+/* main canopy inflates */
+@keyframes iv-canopy {
+  0%, 66.6% { opacity: 0; transform: scale(0.05); }
+  67.4% { opacity: 1; transform: scale(0.25); }
+  69.8% { opacity: 1; transform: scale(1.14); }
+  71.8% { transform: scale(0.96); }
+  73.8%, 100% { opacity: 1; transform: scale(1); }
+}
+.iv-canopy { animation-name: iv-canopy; }
+
+/* hanging body arrives */
+@keyframes iv-hg-in {
+  0%, 66.8% { opacity: 0; transform: translateY(-90px) scale(0.85); }
+  69.4% { opacity: 1; transform: translateY(8px) scale(1.04); }
+  72.4%, 100% { opacity: 1; transform: none; }
+}
+.iv-hg-in { animation-name: iv-hg-in; }
+
+/* sway under the canopy, then settle for landing */
+@keyframes iv-sway {
+  0%, 70% { transform: rotate(0deg); }
+  75% { transform: rotate(-4deg); }
+  82.5% { transform: rotate(4.5deg); }
+  88.3% { transform: rotate(-2deg); }
+  91.7%, 100% { transform: rotate(0deg); }
+}
+.iv-sway { animation-name: iv-sway; }
+
+/* touchdown: squash, hop, settle */
+@keyframes iv-land {
+  0%, 91.7% { transform: none; }
+  93% { transform: scale(1.05, 0.93); }
+  95%, 100% { transform: none; }
+}
+.iv-land { animation-name: iv-land; }
+
+/* canopy falls behind him */
+@keyframes iv-collapse {
+  0%, 91.7% { opacity: 1; transform: none; }
+  93.5% { opacity: 1; transform: translate(-30px, 40px) scale(1, 0.55) rotate(-8deg); }
+  97%, 100% { opacity: 0; transform: translate(-90px, 160px) scale(1.1, 0.15) rotate(-20deg); }
+}
+.iv-collapse { animation-name: iv-collapse; }
+
+/* camera shake + flash on opening shock */
+@keyframes iv-shake {
+  0%, 66% { transform: none; }
+  67.2% { transform: translate(-7px, 5px) scale(1.04); }
+  68.4% { transform: translate(8px, -6px) scale(1.06); }
+  69.6% { transform: translate(-5px, 4px) scale(1.04); }
+  71% { transform: translate(4px, -3px) scale(1.02); }
+  73%, 100% { transform: none; }
+}
+.iv-shake {
+  animation: iv-shake 12s linear both;
+}
+
+@keyframes iv-flash {
+  0%, 65.8% { opacity: 0; }
+  67.2% { opacity: 0.75; }
+  71.5%, 100% { opacity: 0; }
+}
+.iv-flash {
+  animation: iv-flash 12s ease-out both;
+}
+
+/* arms hold the lines, then drop to his sides just before touchdown */
+@keyframes iv-armL-up { 0%, 89% { transform: rotate(0deg); } 92.5%, 100% { transform: rotate(-94deg); } }
+@keyframes iv-armL-fore { 0%, 89% { transform: rotate(0deg); } 92.5%, 100% { transform: rotate(-94.5deg); } }
+@keyframes iv-armR-up { 0%, 89% { transform: rotate(0deg); } 92.5%, 100% { transform: rotate(94deg); } }
+@keyframes iv-armR-fore { 0%, 89% { transform: rotate(0deg); } 92.5%, 100% { transform: rotate(94.5deg); } }
+.iv-armL-up { animation-name: iv-armL-up; }
+.iv-armL-fore { animation-name: iv-armL-fore; }
+.iv-armR-up { animation-name: iv-armR-up; }
+.iv-armR-fore { animation-name: iv-armR-fore; }
+
+/* legs swing gently while hanging, then straighten and stay still for landing */
+@keyframes iv-dangle-a {
+  0%, 72% { transform: rotate(0deg); }
+  76% { transform: rotate(-6deg); }
+  81% { transform: rotate(7deg); }
+  86% { transform: rotate(-5deg); }
+  90% { transform: rotate(3deg); }
+  92.5%, 100% { transform: rotate(0deg); }
+}
+@keyframes iv-dangle-b {
+  0%, 72% { transform: rotate(0deg); }
+  76% { transform: rotate(6deg); }
+  81% { transform: rotate(-7deg); }
+  86% { transform: rotate(5deg); }
+  90% { transform: rotate(-3deg); }
+  92.5%, 100% { transform: rotate(0deg); }
+}
+.iv-dangle-a { animation-name: iv-dangle-a; }
+.iv-dangle-b { animation-name: iv-dangle-b; }
+
+/* twinkling stars and fireflies */
+@keyframes iv-twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+.iv-twinkle { animation: iv-twinkle 3s ease-in-out infinite; }
