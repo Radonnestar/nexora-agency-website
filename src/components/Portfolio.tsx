@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
 import SectionHeading from './SectionHeading'
+import ProjectArt from './ProjectArt'
 
 const categories = ['All', 'Web', 'Branding', 'UI/UX', 'Marketing'] as const
 
@@ -112,8 +113,10 @@ export default function Portfolio() {
               >
                 <div className="overflow-hidden">
                   <div
-                    className={`h-48 bg-linear-to-br ${project.gradient} transition duration-500 group-hover:scale-110`}
-                  />
+                    className={`relative h-48 bg-linear-to-br ${project.gradient} transition duration-500 group-hover:scale-110`}
+                  >
+                    <ProjectArt title={project.title} />
+                  </div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between">

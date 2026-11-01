@@ -2,6 +2,8 @@ import { motion } from 'motion/react'
 import type { Variants } from 'motion/react'
 import { Target, Lightbulb, HeartHandshake } from 'lucide-react'
 import SectionHeading from './SectionHeading'
+import Avatar from './Avatar'
+import type { AvatarLook } from './Avatar'
 
 const values = [
   {
@@ -21,19 +23,39 @@ const values = [
   },
 ]
 
-const team = [
-  { name: 'Ayesha Rahman', role: 'Founder & Creative Director', gradient: 'from-indigo-500 to-purple-600' },
-  { name: 'Daniel Brooks', role: 'Lead Developer', gradient: 'from-sky-500 to-blue-600' },
-  { name: 'Maya Chen', role: 'UI/UX Designer', gradient: 'from-pink-500 to-rose-600' },
-  { name: 'Omar Haddad', role: 'Marketing Strategist', gradient: 'from-emerald-500 to-teal-600' },
-]
-
-function getInitials(name: string) {
-  return name
-    .split(' ')
-    .map((part) => part[0])
-    .join('')
+type Member = {
+  name: string
+  role: string
+  gradient: string
+  look: AvatarLook
 }
+
+const team: Member[] = [
+  {
+    name: 'Ayesha Rahman',
+    role: 'Founder & Creative Director',
+    gradient: 'from-indigo-500 to-purple-600',
+    look: { skin: '#e0ac69', hair: '#1f1235', shirt: '#4f46e5', style: 'long' },
+  },
+  {
+    name: 'Daniel Brooks',
+    role: 'Lead Developer',
+    gradient: 'from-sky-500 to-blue-600',
+    look: { skin: '#f1c9a0', hair: '#3b2a20', shirt: '#0ea5e9', style: 'short', beard: true, glasses: true },
+  },
+  {
+    name: 'Maya Chen',
+    role: 'UI/UX Designer',
+    gradient: 'from-pink-500 to-rose-600',
+    look: { skin: '#f3d2b3', hair: '#111827', shirt: '#d946ef', style: 'bun' },
+  },
+  {
+    name: 'Omar Haddad',
+    role: 'Marketing Strategist',
+    gradient: 'from-emerald-500 to-teal-600',
+    look: { skin: '#a8714a', hair: '#1c1917', shirt: '#10b981', style: 'curly', beard: true },
+  },
+]
 
 const viewport = { once: true, amount: 0.25 } as const
 
@@ -138,11 +160,13 @@ export default function About() {
           {team.map((person) => (
             <motion.div key={person.name} variants={member} className="text-center">
               <motion.div
-                whileHover={{ scale: 1.12, rotate: 6 }}
+                whileHover={{ scale: 1.1, rotate: 4 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-                className={`mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-linear-to-br ${person.gradient} text-2xl font-bold text-white`}
+                role="img"
+                aria-label={`Portrait of ${person.name}`}
+                className={`mx-auto h-28 w-28 overflow-hidden rounded-full bg-linear-to-br ${person.gradient} ring-4 ring-white/10`}
               >
-                {getInitials(person.name)}
+                <Avatar {...person.look} />
               </motion.div>
               <h3 className="mt-4 font-semibold text-white">{person.name}</h3>
               <p className="mt-1 text-sm text-slate-400">{person.role}</p>
